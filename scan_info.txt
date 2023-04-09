@@ -1,0 +1,10 @@
+# settings
+path_driver: /Users/Nobody/chromedriver_mac64
+
+url_login: https://identity.best_company.com/
+email: nobody@gmail.com
+password: XXXXXXXXXXXXXXXX
+
+wait_time: 5
+sleep_geturl: 3
+sleep_save: 3
