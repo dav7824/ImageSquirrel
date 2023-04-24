@@ -1,5 +1,8 @@
 __pycache__/
 Download/
 *.swp
+*.pyc
 scan_info*
 note
+.DS_STORE
+switch.py

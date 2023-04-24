@@ -55,7 +55,7 @@ class ScanAlbum(ScanBase):
             # scroll to bottom
             for _ in range(3):
                 self.execute_script('window.scrollTo(0,document.body.scrollHeight)')
-                time.sleep(2)
+                time.sleep(3)
             # get tags of photo URLs
             links = self.find_elements(By.CSS_SELECTOR, 'a[class="overlay"]')
             for link in links:
