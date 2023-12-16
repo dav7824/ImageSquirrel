@@ -14,7 +14,7 @@ To set up driver, you can either:
     from selenium import webdriver
     import os
 
-    os.environ['PATH'] += path_to_driver
+    os.environ['PATH'] += ':' + path_to_driver
     driver = webdriver.Chrome()
     ```
 1. Pass drvier path by `Options` class when creating webdriver object
@@ -26,3 +26,6 @@ To set up driver, you can either:
     options.chrome_executable_path = path_to_driver
     driver = webdriver.Chrome(options=options)
     ```
+
+### FAQ
+- [MacOS Catalina(v 10.15.3): Error: “chromedriver” cannot be opened because the developer cannot be verified. Unable to launch the chrome browser](https://stackoverflow.com/questions/60362018/macos-catalinav-10-15-3-error-chromedriver-cannot-be-opened-because-the-de)

@@ -1,5 +1,5 @@
 # settings
-path_driver: /Users/Nobody/chromedriver_mac64
+path_driver: /Users/Nobody/chromedriver-mac-x64
 
 url_login: https://identity.best_company.com/
 email: nobody@gmail.com

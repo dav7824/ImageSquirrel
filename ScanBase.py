@@ -8,7 +8,7 @@ import time
 class ScanBase(webdriver.Chrome):
     def __init__(self, scan_info):
         self.scan_info = scan_info
-        os.environ['PATH'] += self.scan_info['path_driver']  # add driver to system path
+        os.environ['PATH'] += ':' + self.scan_info['path_driver']  # add driver to system path
         super(ScanBase, self).__init__()
         self.implicitly_wait( float(self.scan_info['wait_time']) )
         self.maximize_window()
