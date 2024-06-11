@@ -1,5 +1,7 @@
 # settings
-path_driver: /Users/Nobody/chromedriver-mac-x64
+
+# Note: With the new updates of Selenium & Chrome, it seems that one no longer needs to manually download and set chrome driver. Hence, this line is commented.
+#path_driver: /Users/Nobody/chromedriver-mac-x64
 
 url_login: https://identity.best_company.com/
 email: nobody@gmail.com

@@ -7,3 +7,4 @@ scan_info*
 note
 .DS_STORE
 switch.py
+.python-version

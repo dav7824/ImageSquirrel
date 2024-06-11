@@ -8,7 +8,8 @@ import time
 class ScanBase(webdriver.Chrome):
     def __init__(self, scan_info):
         self.scan_info = scan_info
-        os.environ['PATH'] += ':' + self.scan_info['path_driver']  # add driver to system path
+        # Note: With the new updates of Selenium & Chrome, it seems that one no longer needs to manually download and set chrome driver. Hence, this line is commented.
+        #os.environ['PATH'] += ':' + self.scan_info['path_driver']  # add driver to system path
         super(ScanBase, self).__init__()
         self.implicitly_wait( float(self.scan_info['wait_time']) )
         self.maximize_window()
