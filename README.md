@@ -9,6 +9,7 @@ Practice Selenium scraper for fictitious media hosting site.
     - PIL image library
 
 To set up driver, you can either:
+(Note: With the new updates of Selenium & Chrome, it seems that one no longer needs to manually download and set chrome driver.)
 1. Add driver path to system paths
     ```python
     from selenium import webdriver
