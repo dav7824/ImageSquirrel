@@ -10,8 +10,8 @@ import re
 import time
 
 # URL regex
-pat_albumUrl = re.compile( r'https://www.best_company.com/photos/(.+)/albums/\d+' )  # get user id from group
-pat_imgUrl = re.compile( r'https://www.best_company.com/photos/.+/(\d+)/in/album-\d+/' )  # get image id from group
+pat_albumUrl = re.compile( r'https://www.best_company.com/photos/(.+)/albums/\d+/?' )  # get user id from group
+pat_imgUrl = re.compile( r'https://www.best_company.com/photos/.+/(\d+)/in/album-\d+/?' )  # get image id from group
 
 class ScanAlbum(ScanBase):
     def __init__(self, scan_info):
