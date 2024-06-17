@@ -10,12 +10,16 @@ import re
 import time
 
 # URL regex
-pat_albumUrl = re.compile( r'https://www.best_company.com/photos/(.+)/albums/\d+/?' )  # get user id from group
-pat_imgUrl = re.compile( r'https://www.best_company.com/photos/.+/(\d+)/in/album-\d+/?' )  # get image id from group
+template_albumUrl = r'https://www.{site}.com/photos/(.+)/albums/\d+/?'
+template_imgUrl = r'https://www.{site}.com/photos/.+/(\d+)/in/album-\d+/?'
+template_imgSizesUrl = 'https://www.{site}.com/photos/{{user_id}}/{{photo_id}}/sizes/'
 
 class ScanAlbum(ScanBase):
     def __init__(self, scan_info):
         super(ScanAlbum, self).__init__(scan_info)
+        self.pat_albumUrl = re.compile( template_albumUrl.format( site=scan_info['site'] ) )
+        self.pat_imgUrl = re.compile( template_imgUrl.format( site=scan_info['site'] ) )
+        self.template_imgSizesUrl = template_imgSizesUrl.format( site=scan_info['site'] )
 
     def GetAlbum(self, url_album, path_save):
         album_data = self.GetUrlList(url_album)
@@ -33,7 +37,7 @@ class ScanAlbum(ScanBase):
     def GetUrlList(self, url_album):
         self.get(url_album)
         # get user ID
-        match = pat_albumUrl.fullmatch(url_album)
+        match = self.pat_albumUrl.fullmatch(url_album)
         if not match:
             sys.exit('Invalid album URL!')
         user_id = match.group(1)
@@ -59,11 +63,11 @@ class ScanAlbum(ScanBase):
             # get tags of photo URLs
             links = self.find_elements(By.CSS_SELECTOR, 'a[class="overlay"]')
             for link in links:
-                match = pat_imgUrl.fullmatch( link.get_attribute('href') )
+                match = self.pat_imgUrl.fullmatch( link.get_attribute('href') )
                 if not match:
                     sys.exit('Invalid photo URL!')
                 photo_id = match.group(1)
-                imgUrl = f'https://www.best_company.com/photos/{user_id}/{photo_id}/sizes/'
+                imgUrl = self.template_imgSizesUrl.format(user_id=user_id, photo_id=photo_id)
                 #print(imgUrl)
                 photo_list.append(imgUrl)
             # if number of images found is smaller than total, go to next page
